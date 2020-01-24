@@ -1,0 +1,61 @@
+plugins {
+    id 'java'
+    id 'idea'
+    id "net.ltgt.errorprone" version "1.1.0"
+    id 'jacoco'
+}
+
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+ext {
+    sparkJavaVersion = '2.9.1'
+    slf4jApiVersion = '1.7.28'
+    errorproneVersion = '2.3.3'
+    guavaVersion = '28.1-jre'
+    jUnitVersion = '5.5.2'
+    truthVersion = '1.0'
+    jacocoVersion = '0.8.5'
+    gsonVersion = '2.8.6'
+}
+
+dependencies {
+    errorproneJavac "com.google.errorprone:error_prone_core:$errorproneVersion"
+    errorprone "com.google.errorprone:error_prone_core:$errorproneVersion"
+
+    compile group: "org.slf4j", name: "slf4j-api", version: "$slf4jApiVersion"
+    compile group: "org.slf4j", name: "slf4j-log4j12", version: "$slf4jApiVersion"
+    compile "com.sparkjava:spark-core:$sparkJavaVersion"
+    compile group: 'com.google.guava', name: 'guava', version: "$guavaVersion"
+    compile "com.google.code.gson:gson:$gsonVersion"
+
+    testCompile "org.junit.jupiter:junit-jupiter-api:$jUnitVersion"
+    testCompile "org.junit.jupiter:junit-jupiter-engine:$jUnitVersion"
+    testCompile "org.junit.jupiter:junit-jupiter-params:$jUnitVersion"
+
+    testCompile group: 'com.google.truth', name: 'truth', version: "$truthVersion"
+    testCompile group: 'com.google.truth.extensions', name: 'truth-java8-extension', version: "$truthVersion"
+
+}
+
+jacoco {
+    toolVersion = "$jacocoVersion"
+    reportsDir = file("$buildDir/customJacocoReportDir")
+}
+test {
+    useJUnitPlatform()
+}
+
+jacocoTestReport {
+    reports {
+        html.enabled = true
+        xml.enabled = false
+        csv.enabled = false
+        html.destination file("${buildDir}/jacocoHtml")
+    }
+}
+test.finalizedBy jacocoTestReport

@@ -1,0 +1,59 @@
+<html lang="en" class="gr__localhost mdl-js">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+    <link href="./css/reset.css" rel="StyleSheet" type="text/css">
+    <link href="css/styles.css" rel="StyleSheet" type="text/css">
+</head>
+<body>
+    <div class="root">
+        <div class="form-box">
+            <h1 class="header">Registration</h1>
+            <hr>
+            <form>
+                <div class="row">
+                    <div class="clearfix">
+                        <label for="registration-login" id="registration-login-label">Login: </label>
+                        <input id="registration-login" type="text">
+                    </div>
+                    <div class="error-message">
+                        <span id="error-login-message">Wrong login input!</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="clearfix">
+                        <label for="registration-password" id="registration-password-label">Password: </label>
+                        <input id="registration-password" type="password">
+                    </div>
+                    <div class="error-message">
+                        <span id="error-password-message">Password must contain Upper and Lowercase letters and numbers!</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="clearfix">
+                        <label for="registration-second-password" id="registration-second-password-label">Repeat password: </label>
+                        <input id="registration-second-password" type="password">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="clearfix">
+                        <label for="registration-file-input" id="registration-file-input-label">Avatar </label>
+                        <input id="registration-file-input" type="file">
+                    </div>
+                    <div class="error-message">
+                        <span id="error-avatar-message">Image is not selected!</span>
+                    </div>
+                    <div class="box-image">
+                        <img src="img/everest.jpg" alt="Avatar image">
+                        <p class="image-name">everest.jpg</p>
+                    </div>
+                </div>
+                <div class="clearfix">
+                    <button class="form-button">Register</button>
+                    <a href="#/login" class="form-link">Have an account?</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
